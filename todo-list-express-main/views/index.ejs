@@ -18,15 +18,20 @@
     <title>Document</title>
 </head>
 <body>
+    <! -------- Creating the list items as ejs dynamicly using forloop --------!>
     <h1>Todo List: </h1>
     <ul class="todoItems">
     <% for(let i=0; i < items.length; i++) {%>
         <li class="item">
+            <! --------using if statement to  determin boolean value of list item --------!>
             <% if(items[i].completed === true) {%>
+                <!----- Add data to the span if boolean value matches the value of the completed key -----!>   -->
                 <span class='completed'><%= items[i].thing %></span>
+                <! ------- insert span without the class  -------!>
             <% }else{ %>
                 <span><%= items[i].thing %></span>
-            <% } %>    
+            <% } %>   
+            <! ------ Add delete button -----!> 
             <span class='fa fa-trash'></span>
         </li>
     <% } %>
@@ -35,9 +40,10 @@
     <h2>Left to do: <%= left %></h2>
 
     <h2>Add A Todo:</h2>
-
+<! -------- Creating the form to add a todo item --------!>
     <form action="/addTodo" method="POST">
         <input type="text" placeholder="Thing To Do" name="todoItem">
+        <!--- submit todo task / item -->
         <input type="submit">
     </form>
     
